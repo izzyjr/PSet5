@@ -6,6 +6,9 @@
 #define DICTIONARY_H
 
 #include <stdbool.h>
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
 
 // maximum length for a word
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
@@ -30,5 +33,11 @@ unsigned int size(void);
  * Unloads dictionary from memory.  Returns true if successful else false.
  */
 bool unload(void);
+
+/**
+ * sum ascii values.  Returns hash value.
+ */
+ int hash_function(char* key);
+
 
 #endif // DICTIONARY_H
