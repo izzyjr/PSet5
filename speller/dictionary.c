@@ -17,7 +17,7 @@ typedef struct node
 }
 node;
 
-node* hashtable[100];
+node* hash_table[100];
 // node* head = malloc(sizeof(node));
 
 /**
@@ -83,20 +83,20 @@ bool load(const char *dictionary)
         {
             strcpy(new_node->word, word);
             int hash_code = hash_function(new_node->word);
-            new_node->next = hashtable[hash_code];
-            hashtable[hash_code] = new_node;
+            new_node->next = hash_table[hash_code];
+            hash_table[hash_code] = new_node;
 
             //Prints dictionary filled hash table - to check
 
-            // node* temp = hashtable[hash_code];
-            // printf("%i: ", hash_code);
+            node* temp = hash_table[hash_code];
+            printf("%i: ", hash_code);
 
-            // while(temp != NULL)
-            // {
-            //     printf("%s -> ", temp->word);
-            //     temp = temp->next;
-            // }
-            //     printf("\n");
+            while(temp != NULL)
+            {
+                printf("%s -> ", temp->word);
+                temp = temp->next;
+            }
+                printf("\n");
         }
     }
 
