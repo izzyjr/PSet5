@@ -86,13 +86,13 @@ bool load(const char *dictionary)
             new_node->next = hashtable[hash_code];
             hashtable[hash_code] = new_node;
 
-            // node* temp = hashtable[hash_code];
+            node* temp = hashtable[hash_code];
 
-            // while(temp != NULL)
-            // {
-            //     printf("%i: %s \n",hash_code, temp->word);
-            //     temp = temp->next;
-            // }
+            while(temp != NULL)
+            {
+                printf("%i: %s \n",hash_code, temp->word);
+                temp = temp->next;
+            }
         }
     }
 
