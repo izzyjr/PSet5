@@ -21,7 +21,7 @@ node;
 node* hash_table[100];
 
 int dictionary_words = 0;
-// node* head = malloc(sizeof(node));
+
 
 /**
  * Returns true if word is in dictionary else false.
@@ -94,7 +94,7 @@ bool load(const char *dictionary)
         node *new_node = malloc(sizeof(node));
         if(new_node == NULL)
         {
-            // unload();
+            unload();
             return false;
         }
         else
@@ -128,7 +128,7 @@ bool load(const char *dictionary)
  */
 unsigned int size(void)
 {
-    if(dictionary_words != 0)
+    if (dictionary_words != 0)
     {
         return dictionary_words;
     }
@@ -143,6 +143,15 @@ unsigned int size(void)
  */
 bool unload(void)
 {
-    // TODO
-    return false;
+    for (int i = 0; i < 100; i++)
+    {
+        node* cursor = hash_table[i];
+        while(cursor != NULL)
+        {
+            node *temp = cursor;
+            cursor = cursor->next;
+            free(temp);
+        }
+    }
+    return true;
 }
