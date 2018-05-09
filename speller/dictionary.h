@@ -37,7 +37,7 @@ bool unload(void);
 /**
  * sum ascii values.  Returns hash value.
  */
- int hash_function(char* key);
+int hash_function(const char* key);
 
 
 #endif // DICTIONARY_H

@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 
 #include "dictionary.h"
 
@@ -25,14 +26,29 @@ node* hash_table[100];
  */
 bool check(const char *word)
 {
-    // TODO
+    int hash_code = hash_function(word);
+    node* cursor = hash_table[hash_code];
+    int verdict = 0;
+
+    while(cursor != NULL)
+    {
+        verdict = strcasecmp(cursor->word, word);
+        if (verdict == 0)
+        {
+            return true;
+        }
+        else
+        {
+            cursor = cursor->next;
+        }
+    }
     return false;
 }
 
 /**
  * sum ascii values.  Returns hash value.
  */
-int hash_function(char* key)
+int hash_function(const char* key)
 {
     // sum ascii values
     bool pending = true;
@@ -88,15 +104,15 @@ bool load(const char *dictionary)
 
             //Prints dictionary filled hash table - to check
 
-            node* temp = hash_table[hash_code];
-            printf("%i: ", hash_code);
+            // node* cursor = hash_table[hash_code];
+            // printf("%i: ", hash_code);
 
-            while(temp != NULL)
-            {
-                printf("%s -> ", temp->word);
-                temp = temp->next;
-            }
-                printf("\n");
+            // while(cursor != NULL)
+            // {
+            //     printf("%s -> ", cursor->word);
+            //     cursor = cursor->next;
+            // }
+            //     printf("\n");
         }
     }
 
