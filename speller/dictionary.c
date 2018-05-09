@@ -19,6 +19,8 @@ typedef struct node
 node;
 
 node* hash_table[100];
+
+int dictionary_words = 0;
 // node* head = malloc(sizeof(node));
 
 /**
@@ -101,6 +103,7 @@ bool load(const char *dictionary)
             int hash_code = hash_function(new_node->word);
             new_node->next = hash_table[hash_code];
             hash_table[hash_code] = new_node;
+            dictionary_words++;
 
             //Prints dictionary filled hash table - to check
 
@@ -125,8 +128,14 @@ bool load(const char *dictionary)
  */
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    if(dictionary_words != 0)
+    {
+        return dictionary_words;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 /**
