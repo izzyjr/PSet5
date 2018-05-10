@@ -104,20 +104,10 @@ bool load(const char *dictionary)
             new_node->next = hash_table[hash_code];
             hash_table[hash_code] = new_node;
             dictionary_words++;
-
-            //Prints dictionary filled hash table - to check
-
-            // node* cursor = hash_table[hash_code];
-            // printf("%i: ", hash_code);
-
-            // while(cursor != NULL)
-            // {
-            //     printf("%s -> ", cursor->word);
-            //     cursor = cursor->next;
-            // }
-            //     printf("\n");
         }
     }
+
+    fclose(dictFile);
 
     // TODO
     return true;
